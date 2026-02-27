@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <article>
       <section
-        className="relative w-full overflow-hidden bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-700 px-4 py-16 md:px-6 md:py-24"
+        className="relative w-full overflow-hidden bg-gradient-to-br from-orange-500 via-indigo-600 to-blue-700 px-4 py-16 md:px-6 md:py-24"
         aria-labelledby="hero-heading"
       >
         {/* Decorative blobs */}
