@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/nav";
+import { SectionCardIcon } from "@/components/SectionCardIcon";
 
 export default function HomePage() {
   return (
@@ -25,8 +26,9 @@ export default function HomePage() {
             <li key={slug}>
               <Link
                 href={`/docs/${slug}`}
-                className="block p-5 rounded border border-border bg-bg hover:border-focus-ring hover:bg-focus-ring/5 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
+                className="flex items-center gap-4 p-5 rounded border border-border bg-bg hover:border-focus-ring hover:bg-focus-ring/5 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
               >
+                <SectionCardIcon slug={slug} className="shrink-0" />
                 <span className="font-medium text-fg">{label}</span>
               </Link>
             </li>
