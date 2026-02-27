@@ -4,23 +4,34 @@ import { SectionCardIcon } from "@/components/SectionCardIcon";
 
 export default function HomePage() {
   return (
-    <article className="px-4 md:px-6">
-      <section className="max-w-2xl mx-auto py-12 md:py-16 text-center" aria-labelledby="hero-heading">
-        <h1 id="hero-heading" className="text-4xl md:text-5xl font-bold text-fg mb-4">
-          Hub de Accesibilidad
-        </h1>
-        <p className="text-xl text-fg-muted mb-6">
-          Documentación y referencia para diseñar y desarrollar productos digitales accesibles. Consulta las secciones siguientes para fundamentos, criterios y buenas prácticas.
-        </p>
-        <Link
-          href="/docs"
-          className="inline-block px-5 py-2.5 rounded font-medium bg-focus-ring text-white hover:opacity-90 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
-        >
-          Ver documentación
-        </Link>
+    <article>
+      <section
+        className="relative w-full overflow-hidden bg-gradient-to-br from-violet-600 via-indigo-600 to-blue-700 px-4 py-16 md:px-6 md:py-24"
+        aria-labelledby="hero-heading"
+      >
+        {/* Decorative blobs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-2xl text-center">
+          <h1 id="hero-heading" className="mb-4 text-4xl font-bold text-white md:text-5xl">
+            Hub de Accesibilidad
+          </h1>
+          <p className="mb-8 text-xl text-indigo-100">
+            Documentación y referencia para diseñar y desarrollar productos digitales accesibles. Consulta las secciones siguientes para fundamentos, criterios y buenas prácticas.
+          </p>
+          <Link
+            href="/docs"
+            className="inline-block rounded-lg bg-white px-6 py-3 font-semibold text-indigo-700 hover:bg-indigo-50 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-700"
+          >
+            Ver documentación
+          </Link>
+        </div>
       </section>
 
-      <section className="py-8 border-t border-border" aria-label="Secciones de documentación">
+      <section className="border-t border-border px-4 py-8 md:px-6" aria-label="Secciones de documentación">
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0 m-0">
           {NAV_ITEMS.map(({ slug, label }) => (
             <li key={slug}>
