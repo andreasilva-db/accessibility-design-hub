@@ -1,0 +1,34 @@
+# Desarrollo
+
+## Descripción
+
+Implementación técnica de la accesibilidad: HTML semántico, ARIA cuando sea necesario, exposición del estado y nombre a tecnologías de asistencia. Incluye buenas prácticas de componentes (botones, enlaces, modales, tabs).
+
+## Alcance
+
+Aplica al código (HTML, CSS, JS y frameworks). Complementa diseño (visual, interacción) y contenido (textos, estructura). Requiere pruebas con lectores de pantalla y herramientas de inspección.
+
+## Checklist
+
+- Uso de elementos nativos (button, a, input, label) antes de ARIA.
+- ARIA solo cuando el semántico nativo no basta; roles y atributos correctos.
+- Nombres accesibles (nombre + opcionalmente descripción) para componentes custom.
+- Estados (expandido, seleccionado, error) expuestos a AT.
+
+## Errores comunes
+
+- Div/span con role="button" sin teclado ni focus management.
+- ARIA redundante (p. ej. role="button" en un elemento `button`).
+- Contenido dinámico sin live region o sin anuncio al cambiar.
+
+## Cómo validar
+
+- Inspección con DevTools (árbol de accesibilidad, ARIA).
+- Pruebas con NVDA/JAWS/VoiceOver según plataforma.
+- Linters (eslint-plugin-jsx-a11y) y pruebas automatizadas (axe, Pa11y).
+
+## Recursos relacionados
+
+- [Interacción](/docs/interaccion) — requisitos de teclado y foco.
+- [Contenido](/docs/contenido) — estructura y texto alternativo.
+- Referencia: WAI-ARIA Authoring Practices, WCAG 2.2 criterios 4.1.2 (nombre, función, valor).

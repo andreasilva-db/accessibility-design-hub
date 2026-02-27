@@ -1,0 +1,34 @@
+# Interacción
+
+## Descripción
+
+Accesibilidad del comportamiento de la interfaz: navegación por teclado, gestión del foco, gestos alternativos y tiempos suficientes. Incluye evitar trampas de foco y ofrecer atajos y saltos (p. ej. skip links).
+
+## Alcance
+
+Aplica a componentes interactivos (formularios, menús, modales, carruseles) y a la navegación global. Requiere coordinación entre diseño (orden de foco, estados) y desarrollo (implementación).
+
+## Checklist
+
+- Toda función alcanzable con teclado (Tab, Enter, Espacio, flechas si aplica).
+- Orden de foco lógico y visible (indicador de foco claro).
+- Sin trampas de foco; en modales, foco inicial y retorno al activador.
+- Tiempos ajustables o ampliables (p. ej. pausar animaciones, extender sesión).
+
+## Errores comunes
+
+- Elementos interactivos no enfocables (p. ej. div con onClick sin tabIndex/rol).
+- Modales que no devuelven el foco al abrir/cerrar.
+- Contenido que desaparece antes de que el usuario pueda leerlo o actuar.
+
+## Cómo validar
+
+- Navegación completa con solo teclado (sin ratón).
+- Comprobar orden de foco con Tab y visibilidad del foco.
+- Lectores de pantalla para anuncios y flujo lógico.
+
+## Recursos relacionados
+
+- [Desarrollo](/docs/desarrollo) — implementación de foco y ARIA.
+- [Proceso de diseño](/docs/proceso-de-diseno) — prototipos y pruebas con teclado.
+- Referencia: WCAG 2.2 criterios 2.1.x (teclado) y 2.4.x (navegable).

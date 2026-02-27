@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-fg: #1a1a1a;
+  --color-bg: #fafafa;
+  --color-fg-muted: #666;
+  --color-focus-ring: #0066cc;
+  --color-border: #e5e5e5;
+  --motion-duration: 150ms;
+}
+
+.dark {
+  --color-fg: #f0f0f0;
+  --color-bg: #1a1a1a;
+  --color-fg-muted: #a0a0a0;
+  --color-focus-ring: #66b3ff;
+  --color-border: #333;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0ms;
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply text-fg bg-bg antialiased;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-focus-ring;
+  }
+}
+
+/* Utility for components that should respect reduced motion */
+.motion-safe-transition {
+  transition-duration: var(--motion-duration);
+}
+
+/* Skip link: visible when focused */
+.skip-link {
+  @apply sr-only;
+}
+
+.skip-link:focus {
+  @apply left-4 top-4 z-50 rounded px-4 py-2 font-medium text-white outline-none;
+  position: absolute;
+  background: var(--color-focus-ring);
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+}
