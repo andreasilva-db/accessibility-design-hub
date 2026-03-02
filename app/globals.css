@@ -59,3 +59,24 @@
   margin: 0;
   overflow: visible;
 }
+
+/* Glass nav: ~18% opacity for a strong glass look; scrolled state increases opacity for text contrast (WCAG) */
+@supports (background: color-mix(in srgb, red 50%, blue)) {
+  .glass-nav {
+    background: color-mix(in srgb, var(--color-bg) 18%, transparent);
+  }
+  .glass-nav.scrolled {
+    background: color-mix(in srgb, var(--color-bg) 58%, transparent);
+  }
+}
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .glass-nav {
+    background: var(--color-bg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-nav {
+    backdrop-filter: none;
+  }
+}
