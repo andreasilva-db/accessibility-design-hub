@@ -15,7 +15,7 @@ export function Sidebar({ onNavigate, className = "" }: SidebarProps) {
   return (
     <nav
       className={`flex flex-col ${className}`}
-      aria-label="Secciones de documentación"
+      aria-label="Documentation sections"
     >
       <ul className="list-none p-0 m-0 flex flex-col gap-0.5">
         {NAV_ITEMS.map(({ slug, label }) => {

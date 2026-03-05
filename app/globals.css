@@ -44,6 +44,57 @@
   transition-duration: var(--motion-duration);
 }
 
+/* ── Hero Gradient ───────────────────────────────────────── */
+/* Light mode: cool periwinkle → pale sky → soft mint */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 65% 90% at 10% 58%, rgba(96, 165, 250, 0.60) 0%, transparent 100%),
+    radial-gradient(ellipse 55% 70% at 88% 12%, rgba(34, 211, 238, 0.52) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 60% at 68% 90%, rgba(45, 212, 191, 0.38) 0%, transparent 100%),
+    linear-gradient(150deg, #dbeafe 0%, #f0f9ff 45%, #e0faf6 100%);
+}
+
+/* Dark mode: vivid blue + cyan on deep navy — matches reference */
+.dark .hero-gradient {
+  background:
+    radial-gradient(ellipse 58% 78% at 10% 58%, rgba(37, 99, 235, 0.95) 0%, transparent 100%),
+    radial-gradient(ellipse 52% 68% at 88% 12%, rgba(6, 182, 212, 0.85) 0%, transparent 100%),
+    radial-gradient(ellipse 46% 56% at 68% 90%, rgba(8, 145, 178, 0.65) 0%, transparent 100%),
+    #030c1e;
+}
+
+/* ── Grain noise overlay ─────────────────────────────────── */
+.hero-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+
+.dark .hero-noise {
+  opacity: 0.20;
+  mix-blend-mode: soft-light;
+}
+
+/* ── Radial vignette for cinematic depth ─────────────────── */
+.hero-vignette {
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(14, 30, 80, 0.10) 100%);
+}
+
+.dark .hero-vignette {
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.50) 100%);
+}
+
+/* ── Hero accent text color ──────────────────────────────── */
+.hero-accent {
+  color: #1d4ed8; /* blue-700 — readable on light gradient */
+}
+
+.dark .hero-accent {
+  color: #67e8f9; /* cyan-300 */
+  text-shadow: 0 0 60px rgba(103, 232, 249, 0.30);
+}
+
 /* Skip link: visible when focused */
 .skip-link {
   @apply sr-only;

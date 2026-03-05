@@ -6,8 +6,8 @@ import { ThemeScript } from "@/components/ThemeScript";
 import { GlobalHeader } from "@/components/layout/GlobalHeader";
 
 export const metadata: Metadata = {
-  title: "Hub de Accesibilidad",
-  description: "Documentación y referencia sobre buenas prácticas de accesibilidad.",
+  title: "Accessibility Design Hub",
+  description: "Documentation and reference for accessible design and development best practices.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen bg-bg text-fg">
         <ThemeScript />
         <AxeDev />

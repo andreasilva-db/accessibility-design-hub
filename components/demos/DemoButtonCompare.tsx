@@ -8,21 +8,21 @@ export function DemoButtonCompare() {
   const [count, setCount] = useState(0);
   return (
     <DemoWrapper
-      title="Botón: accesible frente a no accesible"
-      description="Compara un botón con etiqueta visible y estilo de foco (correcto) con un div que parece un botón (mala accesibilidad)."
+      title="Button: accessible vs. inaccessible"
+      description="Compare a button with a visible label and focus style (correct) against a div that looks like a button (poor accessibility)."
     >
       <div className="flex flex-wrap gap-4 items-center">
         <div className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-fg">Botón accesible</span>
+          <span className="text-sm font-medium text-fg">Accessible button</span>
           <Button
             onClick={() => setCount((c) => c + 1)}
-            aria-label="Incrementar contador"
+            aria-label="Increment counter"
           >
-            Pulsado {count} veces
+            Clicked {count} times
           </Button>
         </div>
         <div className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-fg-muted">Div (no enfocable, sin rol)</span>
+          <span className="text-sm font-medium text-fg-muted">Div (not focusable, no role)</span>
           <div
             className="inline-flex items-center justify-center rounded px-4 py-2 font-medium bg-border text-fg cursor-pointer"
             role="button"
@@ -34,7 +34,7 @@ export function DemoButtonCompare() {
               }
             }}
           >
-            No es un botón real
+            Not a real button
           </div>
         </div>
       </div>

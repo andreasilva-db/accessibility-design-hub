@@ -26,21 +26,31 @@ export function GlobalHeader() {
         href="/"
         className="text-fg font-semibold hover:underline truncate focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 rounded"
       >
-        Hub de Accesibilidad
+        Accessibility Design Hub
       </Link>
       <div className="flex items-center gap-1 shrink-0">
+<<<<<<< HEAD
         <nav className="flex items-center gap-1" aria-label="Navegación principal">
+=======
+        <nav className="flex items-center gap-1" aria-label="Main">
+>>>>>>> 448db70 (Add tools page + update layout and nav)
           <Link
             href="/docs"
             className="px-3 py-2 rounded text-fg hover:bg-fg/10 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
           >
-            Documentación
+            Docs
+          </Link>
+          <Link
+            href="/#tools-heading"
+            className="px-3 py-2 rounded text-fg hover:bg-border motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
+          >
+            Tools
           </Link>
           <Link
             href="/about"
             className="px-3 py-2 rounded text-fg hover:bg-fg/10 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
           >
-            Acerca de
+            About
           </Link>
         </nav>
         <ThemeToggle />

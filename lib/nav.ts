@@ -11,11 +11,11 @@ export const SECTION_SLUGS = [
 export type SectionSlug = (typeof SECTION_SLUGS)[number];
 
 export const NAV_ITEMS: { slug: SectionSlug; label: string }[] = [
-  { slug: "fundamentos", label: "Fundamentos" },
+  { slug: "fundamentos", label: "Fundamentals" },
   { slug: "visual", label: "Visual" },
-  { slug: "interaccion", label: "Interacción" },
-  { slug: "contenido", label: "Contenido" },
-  { slug: "desarrollo", label: "Desarrollo" },
-  { slug: "proceso-de-diseno", label: "Proceso de diseño" },
-  { slug: "recursos", label: "Recursos" },
+  { slug: "interaccion", label: "Interaction" },
+  { slug: "contenido", label: "Content" },
+  { slug: "desarrollo", label: "Development" },
+  { slug: "proceso-de-diseno", label: "Design Process" },
+  { slug: "recursos", label: "Resources" },
 ];

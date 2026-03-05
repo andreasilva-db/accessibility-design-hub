@@ -14,7 +14,7 @@ export function LayoutWithNav({ children }: { children: React.ReactNode }) {
       <div className="flex min-h-[calc(100vh-0)] flex-1">
         <aside
           className="hidden md:block w-56 shrink-0 border-r border-border p-4 overflow-y-auto"
-          aria-label="Navegación por secciones"
+          aria-label="Section navigation"
         >
           <Sidebar />
         </aside>

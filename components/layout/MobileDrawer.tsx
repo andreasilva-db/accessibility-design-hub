@@ -29,7 +29,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
       className="fixed inset-0 z-40 md:hidden"
       role="dialog"
       aria-modal="true"
-      aria-label="Menú de navegación"
+      aria-label="Navigation menu"
     >
       <button
         type="button"
@@ -38,19 +38,19 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
         onKeyDown={(e) => {
           if (e.key === "Escape") onClose();
         }}
-        aria-label="Cerrar menú"
+        aria-label="Close menu"
       />
       <aside
         className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-bg border-r border-border shadow-lg overflow-y-auto motion-safe-transition"
-        aria-label="Secciones de documentación"
+        aria-label="Documentation sections"
       >
         <div className="p-4 border-b border-border flex items-center justify-between">
-          <span className="font-semibold text-fg">Secciones</span>
+          <span className="font-semibold text-fg">Sections</span>
           <button
             type="button"
             className="p-2 rounded hover:bg-border motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
             onClick={onClose}
-            aria-label="Cerrar menú"
+            aria-label="Close menu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

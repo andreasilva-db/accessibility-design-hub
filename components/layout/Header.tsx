@@ -14,7 +14,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           type="button"
           className="md:hidden p-2 rounded hover:bg-border motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
           onClick={onMenuClick}
-          aria-label="Abrir menú de navegación"
+          aria-label="Open navigation menu"
         >
           <svg
             className="w-6 h-6 text-fg"
@@ -30,19 +30,19 @@ export function Header({ onMenuClick }: HeaderProps) {
           href="/"
           className="text-fg font-semibold hover:underline truncate focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 rounded"
         >
-          Hub de Accesibilidad
+          Accessibility Design Hub
         </Link>
       </div>
       <div className="flex-1 min-w-[120px] max-w-xs">
         <label htmlFor="search-input" className="sr-only">
-          Buscar
+          Search
         </label>
         <input
           id="search-input"
           type="search"
-          placeholder="Buscar"
+          placeholder="Search"
           className="w-full rounded border border-border bg-bg px-3 py-2 text-fg placeholder:text-fg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:border-transparent"
-          aria-label="Buscar"
+          aria-label="Search"
         />
       </div>
     </header>

@@ -1,34 +1,68 @@
-# Visual
+# Designing With Color: Clarity Over Decoration
 
-## Descripción
+Color shapes hierarchy, interaction, and meaning. When used incorrectly, it can exclude. When used well, it strengthens every experience.
 
-Requisitos de presentación visual: contraste de color, tipografía legible, uso de iconos y gráficos, y no depender solo del color para transmitir información. Incluye consideraciones para zoom y redimensionamiento de texto.
+---
 
-## Alcance
+## Contrast Ratio Explained Simply
 
-Afecta a interfaces gráficas (UI), documentos y contenido multimedia con componente visual. No sustituye el trabajo de contraste en código (desarrollo) ni de alternativas textuales (contenido).
+Contrast ratio measures the difference in perceived brightness between two colours — typically the text (foreground) and the surface behind it (background). The formula compares relative luminance values and produces a ratio such as **4.5:1** or **21:1**.
 
-## Checklist
+Why does this matter? Around **1 in 12 men** and **1 in 200 women** experience some form of colour vision deficiency. Beyond that, anyone reading a screen in bright sunlight, dealing with eye fatigue, or aging past 40 faces reduced contrast sensitivity. A ratio that looks "fine on my monitor" may be unreadable for millions of people.
 
-- Contraste mínimo 4,5:1 para texto normal y 3:1 para texto grande (AA).
-- Texto redimensionable hasta 200% sin pérdida de función.
-- Iconos y estados no comunicados únicamente por color.
-- Espaciado y tamaños tocables/clickeables suficientes (mín. 44×44 px recomendado).
+WCAG defines two conformance levels:
 
-## Errores comunes
+- **AA** — the baseline. Requires **4.5:1** for normal text and **3:1** for large text (18pt / 24px, or 14pt bold / ~19px bold).
+- **AAA** — the gold standard. Requires **7:1** for normal text and **4.5:1** for large text.
 
-- Usar grises claros sobre blanco para texto body.
-- Botones o enlaces que solo se distinguen por color.
-- Iconos sin etiqueta o contexto (p. ej. solo una lupa para “buscar”).
+Most products should meet AA at a minimum. AAA is recommended wherever possible, especially for body copy and critical UI elements.
 
-## Cómo validar
+<ContrastPlayground />
 
-- Herramientas de contraste (p. ej. Contrast Checker, DevTools).
-- Zoom al 200% y comprobación de layout y legibilidad.
-- Revisión con simulaciones de daltonismo (herramientas o filtros).
+---
 
-## Recursos relacionados
+## Do Not Rely on Color Alone
 
-- [Fundamentos](/docs/fundamentos) — principios y criterios WCAG.
-- [Contenido](/docs/contenido) — texto alternativo e imágenes.
-- Referencia: WCAG 2.2 criterios 1.4.x (distinguible).
+WCAG 1.4.1 states that colour must not be the **only** visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
+
+Think of status badges, form validation errors, chart series, or links embedded in text. If the only difference is a colour change, users with colour vision deficiency, monochrome displays, or high-contrast mode will miss the message entirely.
+
+The fix is straightforward: always pair colour with a **second indicator** — an icon, a text label, a pattern, or an underline.
+
+<ColorMeaningDemo />
+
+---
+
+## Visible Focus States
+
+When someone navigates with a keyboard (Tab / Shift+Tab), the browser moves "focus" between interactive elements. The **focus indicator** is the visual cue that shows where that focus currently sits — usually an outline around the element.
+
+Removing `outline: none` in CSS without providing a replacement destroys keyboard navigation. The user literally cannot see where they are on the page. WCAG 2.4.7 (AA) requires a visible focus indicator, and WCAG 2.4.11 (AA, new in 2.2) tightens the rules around minimum area and contrast.
+
+A good focus state uses a **2px+ solid outline** with **offset**, high contrast against adjacent colours, and is applied consistently across every interactive element.
+
+<FocusStateDemo />
+
+---
+
+## Visual Hierarchy and Cognitive Load
+
+Hierarchy is how the eye knows where to look first, second, and third. It is built with **size**, **weight**, **spacing**, and — to a lesser degree — colour.
+
+When hierarchy is flat (everything the same size, same weight, same faint grey), the cognitive load skyrockets. Users have to read everything to find what matters. This disproportionately affects users with cognitive disabilities, attention disorders, or anyone in a distracting environment.
+
+Practical rules: headings should be visibly larger and bolder than body text. Labels should be distinct from values. Primary actions should stand out from secondary ones. Never rely on a subtle colour difference as the only distinction between levels.
+
+<HierarchyDemo />
+
+---
+
+## Quick Self-Check
+
+Before shipping a visual design, ask yourself:
+
+- Can I understand this interface **in full grayscale**?
+- Is every piece of meaning communicated **without relying on colour alone**?
+- Are **focus states clearly visible** on every interactive element?
+- Does all text meet the **AA minimum** contrast ratio (4.5:1 normal, 3:1 large)?
+- Is the visual hierarchy clear through **size, weight, and spacing** — not just colour?

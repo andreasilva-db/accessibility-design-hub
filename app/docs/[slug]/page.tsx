@@ -4,9 +4,20 @@ import { getSectionContent, isSectionSlug } from "@/lib/sections";
 import { getDocContent, getDocSlugs, hasDoc } from "@/lib/mdx";
 import { DemoWrapper } from "@/components/demos/DemoWrapper";
 import { DemoButtonCompare } from "@/components/demos/DemoButtonCompare";
+import { ContrastPlayground } from "@/components/demos/ContrastPlayground";
+import { ColorMeaningDemo } from "@/components/demos/ColorMeaningDemo";
+import { FocusStateDemo } from "@/components/demos/FocusStateDemo";
+import { HierarchyDemo } from "@/components/demos/HierarchyDemo";
 import type { Metadata } from "next";
 
-const DEMO_COMPONENTS = { DemoWrapper, DemoButtonCompare };
+const DEMO_COMPONENTS = {
+  DemoWrapper,
+  DemoButtonCompare,
+  ContrastPlayground,
+  ColorMeaningDemo,
+  FocusStateDemo,
+  HierarchyDemo,
+};
 const MDX_COMPONENTS = { ...DEMO_COMPONENTS };
 
 type DocSlugPageProps = {
@@ -42,8 +53,8 @@ export async function generateMetadata({ params }: DocSlugPageProps): Promise<Me
   const content = getContent(slug);
   if (!content) return {};
   const titleMatch = content.match(/^#\s+(.+)$/m);
-  const title = titleMatch ? titleMatch[1] : "Documentación";
-  return { title: `${title} | Hub de Accesibilidad` };
+  const title = titleMatch ? titleMatch[1] : "Docs";
+  return { title: `${title} | Accessibility Design Hub` };
 }
 
 export default async function DocSlugPage({ params }: DocSlugPageProps) {
