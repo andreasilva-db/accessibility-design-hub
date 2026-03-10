@@ -4,12 +4,14 @@ import Link from "next/link";
 import { TOOL_ITEMS, TOOL_SLUGS } from "@/lib/tools";
 import { ContrastPlayground } from "@/components/demos/ContrastPlayground";
 import { FocusStateDemo } from "@/components/demos/FocusStateDemo";
+import { TextScalingPlayground } from "@/components/demos/TextScalingPlayground";
 import { ToolPlaceholder } from "@/components/tools/ToolPlaceholder";
 
 /* Map slugs that have an existing demo component */
 const TOOL_DEMOS: Record<string, React.ComponentType> = {
   "contrast-check": ContrastPlayground,
   "focus-order": FocusStateDemo,
+  "text-scaling": TextScalingPlayground,
 };
 
 type ToolPageProps = {
