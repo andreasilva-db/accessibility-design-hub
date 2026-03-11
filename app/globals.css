@@ -95,6 +95,21 @@
   text-shadow: 0 0 60px rgba(103, 232, 249, 0.30);
 }
 
+/* ── Landing page: narrative callout section ─────────────────── */
+.landing-callout {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(var(--callout-glow), 0.07) 0%, transparent 100%),
+    var(--color-bg);
+}
+
+:root {
+  --callout-glow: 0, 102, 204; /* matches --color-focus-ring in light */
+}
+
+.dark {
+  --callout-glow: 102, 179, 255; /* matches --color-focus-ring in dark */
+}
+
 /* Skip link: visible when focused */
 .skip-link {
   @apply sr-only;
