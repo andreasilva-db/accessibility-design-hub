@@ -29,7 +29,11 @@ export function GlobalHeader() {
         Accessibility Design Hub
       </Link>
       <div className="flex items-center gap-1 shrink-0">
+<<<<<<< HEAD
+        <nav className="flex items-center gap-1" aria-label="Navegación principal">
+=======
         <nav className="flex items-center gap-1" aria-label="Main">
+>>>>>>> 448db70 (Add tools page + update layout and nav)
           <Link
             href="/docs"
             className="px-3 py-2 rounded text-fg hover:bg-fg/10 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
