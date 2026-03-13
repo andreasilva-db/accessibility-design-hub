@@ -2,6 +2,7 @@ import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {},
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
   async redirects() {
