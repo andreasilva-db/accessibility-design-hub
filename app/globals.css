@@ -2,21 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design tokens ───────────────────────────────────────── */
 :root {
-  --color-fg: #1a1a1a;
-  --color-bg: #fafafa;
-  --color-fg-muted: #666;
-  --color-focus-ring: #0066cc;
-  --color-border: #e5e5e5;
-  --motion-duration: 150ms;
+  --color-fg: #0f172a;
+  --color-bg: #ffffff;
+  --color-fg-muted: #64748b;
+  --color-focus-ring: #2563eb;
+  --color-border: #e2e8f0;
+  --color-surface: #f8fafc;
+  --color-surface-2: #f1f5f9;
+  --motion-duration: 200ms;
+
+  /* Accent gradient stops */
+  --gradient-from: #1d4ed8;
+  --gradient-to: #0891b2;
+
+  /* Glow */
+  --glow-color: 37, 99, 235;
+  --callout-glow: 37, 99, 235;
 }
 
 .dark {
-  --color-fg: #f0f0f0;
-  --color-bg: #1a1a1a;
-  --color-fg-muted: #a0a0a0;
-  --color-focus-ring: #66b3ff;
-  --color-border: #333;
+  --color-fg: #f8fafc;
+  --color-bg: #0f172a;
+  --color-fg-muted: #94a3b8;
+  --color-focus-ring: #60a5fa;
+  --color-border: #1e293b;
+  --color-surface: #1e293b;
+  --color-surface-2: #334155;
+
+  --gradient-from: #60a5fa;
+  --gradient-to: #22d3ee;
+  --glow-color: 96, 165, 250;
+  --callout-glow: 96, 165, 250;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -25,6 +43,7 @@
   }
 }
 
+/* ── Base ────────────────────────────────────────────────── */
 @layer base {
   html {
     @apply scroll-smooth;
@@ -32,6 +51,7 @@
 
   body {
     @apply text-fg bg-bg antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   *:focus-visible {
@@ -39,84 +59,118 @@
   }
 }
 
-/* Utility for components that should respect reduced motion */
+/* ── Motion utility ─────────────────────────────────────── */
 .motion-safe-transition {
   transition-duration: var(--motion-duration);
 }
 
-/* ── Hero Gradient ───────────────────────────────────────── */
-/* Light mode: cool periwinkle → pale sky → soft mint */
+/* ── Gradient text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Fallback for print / high-contrast */
+  color: var(--gradient-from);
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+/* Light: crisp white with very subtle blue-purple orbs */
 .hero-gradient {
   background:
-    radial-gradient(ellipse 65% 90% at 10% 58%, rgba(96, 165, 250, 0.60) 0%, transparent 100%),
-    radial-gradient(ellipse 55% 70% at 88% 12%, rgba(34, 211, 238, 0.52) 0%, transparent 100%),
-    radial-gradient(ellipse 50% 60% at 68% 90%, rgba(45, 212, 191, 0.38) 0%, transparent 100%),
-    linear-gradient(150deg, #dbeafe 0%, #f0f9ff 45%, #e0faf6 100%);
+    radial-gradient(ellipse 70% 90% at -5% 55%, rgba(37, 99, 235, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 70% at 105% 5%,  rgba(6, 182, 212, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 55% 110%, rgba(139, 92, 246, 0.07) 0%, transparent 65%),
+    linear-gradient(160deg, #eff6ff 0%, #ffffff 45%, #f0fdfe 100%);
 }
 
-/* Dark mode: vivid blue + cyan on deep navy — matches reference */
+/* Dark: deep navy + vivid blue + cyan + purple depth */
 .dark .hero-gradient {
   background:
-    radial-gradient(ellipse 58% 78% at 10% 58%, rgba(37, 99, 235, 0.95) 0%, transparent 100%),
-    radial-gradient(ellipse 52% 68% at 88% 12%, rgba(6, 182, 212, 0.85) 0%, transparent 100%),
-    radial-gradient(ellipse 46% 56% at 68% 90%, rgba(8, 145, 178, 0.65) 0%, transparent 100%),
-    #030c1e;
+    radial-gradient(ellipse 70% 85% at -5% 55%, rgba(37, 99, 235, 0.80) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 70% at 105% 5%,  rgba(6, 182, 212, 0.65) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 55% 110%, rgba(139, 92, 246, 0.35) 0%, transparent 65%),
+    #0f172a;
 }
 
-/* ── Grain noise overlay ─────────────────────────────────── */
+/* ── Hero noise grain ───────────────────────────────────── */
 .hero-noise {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
-  opacity: 0.06;
+  opacity: 0.04;
   mix-blend-mode: overlay;
 }
 
 .dark .hero-noise {
-  opacity: 0.20;
+  opacity: 0.18;
   mix-blend-mode: soft-light;
 }
 
-/* ── Radial vignette for cinematic depth ─────────────────── */
+/* ── Hero vignette ──────────────────────────────────────── */
 .hero-vignette {
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(14, 30, 80, 0.10) 100%);
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(15, 23, 42, 0.06) 100%);
 }
 
 .dark .hero-vignette {
-  background: radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.50) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-/* ── Hero accent text color ──────────────────────────────── */
+/* ── Hero accent (legacy fallback — gradient-text preferred) */
 .hero-accent {
-  color: #1d4ed8; /* blue-700 — readable on light gradient */
+  color: #1d4ed8;
 }
 
 .dark .hero-accent {
-  color: #67e8f9; /* cyan-300 */
-  text-shadow: 0 0 60px rgba(103, 232, 249, 0.30);
+  color: #60a5fa;
+  text-shadow: 0 0 60px rgba(96, 165, 250, 0.30);
 }
 
-/* ── Landing page: narrative callout section ─────────────────── */
+/* ── Landing callout ────────────────────────────────────── */
 .landing-callout {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(var(--callout-glow), 0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(var(--callout-glow), 0.06) 0%, transparent 100%),
     var(--color-bg);
 }
 
-:root {
-  --callout-glow: 0, 102, 204; /* matches --color-focus-ring in light */
+/* ── Card glow on hover ─────────────────────────────────── */
+.card-glow {
+  transition: box-shadow var(--motion-duration) ease, transform var(--motion-duration) ease, border-color var(--motion-duration) ease;
 }
 
-.dark {
-  --callout-glow: 102, 179, 255; /* matches --color-focus-ring in dark */
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(var(--glow-color), 0.3), 0 8px 32px rgba(var(--glow-color), 0.12), 0 2px 8px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
 }
 
-/* Skip link: visible when focused */
+.dark .card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(var(--glow-color), 0.4), 0 8px 32px rgba(var(--glow-color), 0.18), 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ── Stat number gradient ───────────────────────────────── */
+.stat-number {
+  background: linear-gradient(135deg, var(--gradient-from) 30%, var(--gradient-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--gradient-from); /* fallback */
+}
+
+/* ── Icon container gradient ────────────────────────────── */
+.icon-gradient-bg {
+  background: linear-gradient(135deg, rgba(var(--glow-color), 0.15) 0%, rgba(8, 145, 178, 0.10) 100%);
+}
+
+.dark .icon-gradient-bg {
+  background: linear-gradient(135deg, rgba(var(--glow-color), 0.20) 0%, rgba(34, 211, 238, 0.12) 100%);
+}
+
+/* ── Skip link ──────────────────────────────────────────── */
 .skip-link {
   @apply sr-only;
 }
 
 .skip-link:focus {
-  @apply left-4 top-4 z-50 rounded px-4 py-2 font-medium text-white outline-none;
+  @apply left-4 top-4 z-50 rounded-lg px-4 py-2 font-medium text-white outline-none;
   position: absolute;
   background: var(--color-focus-ring);
   clip: auto;
@@ -126,18 +180,22 @@
   overflow: visible;
 }
 
-/* Glass nav: ~18% opacity for a strong glass look; scrolled state increases opacity for text contrast (WCAG) */
+/* ── Glass nav ──────────────────────────────────────────── */
 @supports (background: color-mix(in srgb, red 50%, blue)) {
   .glass-nav {
-    background: color-mix(in srgb, var(--color-bg) 18%, transparent);
+    background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
   }
   .glass-nav.scrolled {
-    background: color-mix(in srgb, var(--color-bg) 58%, transparent);
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    border-bottom: 1px solid var(--color-border);
   }
 }
+
 @supports not (background: color-mix(in srgb, red 50%, blue)) {
   .glass-nav {
     background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
   }
 }
 
@@ -145,4 +203,39 @@
   .glass-nav {
     backdrop-filter: none;
   }
+}
+
+/* ── Nav link underline animation ───────────────────────── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gradient-from), var(--gradient-to));
+  border-radius: 1px;
+  transition: left var(--motion-duration) ease, right var(--motion-duration) ease;
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  left: 0;
+  right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after {
+    transition: none;
+  }
+}
+
+/* ── Section divider ────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
 }

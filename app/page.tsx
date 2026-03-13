@@ -2,20 +2,11 @@ import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
 
-// ── Inline icon components ────────────────────────────────────────────────────
+// ── Inline icons ─────────────────────────────────────────────────────────────
 
 function IconGlobe() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className="h-5 w-5"
-    >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -25,16 +16,7 @@ function IconGlobe() {
 
 function IconShield() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className="h-5 w-5"
-    >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   );
@@ -42,16 +24,7 @@ function IconShield() {
 
 function IconStar() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      className="h-5 w-5"
-    >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );
@@ -112,9 +85,10 @@ const PILLARS: Pillar[] = [
 export default function HomePage() {
   return (
     <article>
-      {/* ── Hero ───────────────────────────────────────────────────────────── */}
+
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
-        className="relative flex w-full items-center justify-center overflow-hidden px-4 py-32 md:px-6 md:py-44 lg:py-52"
+        className="relative flex w-full items-center justify-center overflow-hidden px-4 py-36 md:px-6 md:py-48 lg:py-56"
         aria-labelledby="hero-heading"
       >
         <div className="hero-gradient absolute inset-0" aria-hidden="true" />
@@ -122,117 +96,118 @@ export default function HomePage() {
         <div className="hero-vignette absolute inset-0 pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <p
-            className="mb-7 inline-block rounded-full border border-blue-300/60 dark:border-white/20 bg-blue-100/70 dark:bg-white/10 px-4 py-1.5 text-sm font-medium tracking-wide text-blue-800 dark:text-white/80 backdrop-blur-sm"
-            aria-hidden="true"
-          >
-            Accessible Design · WCAG 2.2
-          </p>
-
+          {/* Headline */}
           <h1
             id="hero-heading"
-            className="mb-6 text-4xl font-extrabold leading-[1.10] tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mb-6 text-4xl font-extrabold leading-[1.08] tracking-tighter text-slate-900 dark:text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]"
           >
-            Inclusive experiences aren&apos;t an extra feature
-            <span className="hero-accent"> — they&apos;re the foundation</span>
+            Inclusive experiences{" "}
+            <br className="hidden sm:block" />
+            aren&apos;t an extra feature
+            <span className="gradient-text"> — they&apos;re the foundation</span>
           </h1>
 
-          <p className="mx-auto max-w-xl text-lg leading-relaxed text-slate-600 dark:text-white/75 md:text-xl">
-            Beyond UI. Creating experiences for everyone
+          {/* Sub */}
+          <p className="mx-auto max-w-lg text-lg leading-relaxed text-slate-500 dark:text-white/60 md:text-xl">
+            Beyond UI. Creating experiences for everyone.
           </p>
         </div>
       </section>
 
-      {/* ── Impact stats ───────────────────────────────────────────────────── */}
+      {/* ── Impact stats ─────────────────────────────────────────────────── */}
       <section
-        className="border-t border-border px-4 py-16 md:px-6"
+        className="border-t border-border px-4 py-16 md:px-6 md:py-20"
         aria-labelledby="stats-heading"
       >
-        <h2 id="stats-heading" className="sr-only">
-          Impact by the numbers
-        </h2>
+        <h2 id="stats-heading" className="sr-only">Impact by the numbers</h2>
 
-        <dl className="mx-auto grid max-w-5xl grid-cols-1 gap-10 sm:grid-cols-3">
-          {IMPACT_STATS.map(({ stat, label, source }) => (
-            <div key={stat} className="flex flex-col items-center text-center">
+        <dl className="mx-auto grid max-w-4xl grid-cols-1 gap-0 sm:grid-cols-3">
+          {IMPACT_STATS.map(({ stat, label, source }, i) => (
+            <div
+              key={stat}
+              className={
+                "flex flex-col items-center text-center px-8 py-6 " +
+                (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
+              }
+            >
               <dt className="sr-only">{label}</dt>
               <dd
-                className="text-5xl font-black tabular-nums tracking-tight text-focus-ring"
+                className="stat-number text-5xl font-black tabular-nums tracking-tighter lg:text-6xl"
                 aria-label={`${stat} — ${label}`}
               >
                 {stat}
               </dd>
-              <p className="mt-2 text-sm font-medium leading-snug text-fg">{label}</p>
-              <p className="mt-1 text-xs text-fg-muted">{source}</p>
+              <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
+              <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
             </div>
           ))}
         </dl>
       </section>
 
-      {/* ── Narrative callout — side by side ──────────────────────────────── */}
+      {/* ── Narrative callout ─────────────────────────────────────────────── */}
       <section
-        className="border-t border-border landing-callout px-4 py-16 md:px-6 lg:py-20"
+        className="border-t border-border landing-callout px-4 py-16 md:px-6 lg:py-24"
         aria-labelledby="narrative-heading"
       >
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
           {/* Left — text */}
           <div>
             <p
-              className="mb-3 text-xs font-semibold uppercase tracking-widest text-focus-ring"
+              className="mb-4 text-xs font-bold uppercase tracking-[0.15em] gradient-text"
               aria-hidden="true"
             >
               The bigger picture
             </p>
             <h2
               id="narrative-heading"
-              className="mb-5 text-2xl font-bold leading-snug text-fg sm:text-3xl"
+              className="mb-5 text-2xl font-bold leading-snug tracking-tight text-fg sm:text-3xl"
             >
               This is bigger than UI
             </h2>
-            <p className="text-base leading-relaxed text-fg-muted sm:text-lg">
-              When a button has no label, or a form gives no error guidance, or a page can&apos;t be
-              navigated by keyboard — most users shrug it off. For 1.3 billion people, those
-              aren&apos;t quirks. They&apos;re locked doors.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-fg-muted sm:text-lg">
-              Accessible design is the practice of removing those locks — one decision at a time.
-              Every color choice, every label, every interactive state is a chance to include or
-              exclude someone.
-            </p>
+            <div className="space-y-4">
+              <p className="text-base leading-relaxed text-fg-muted sm:text-lg">
+                When a button has no label, or a form gives no error guidance, or a page can&apos;t be
+                navigated by keyboard — most users shrug it off. For 1.3 billion people, those
+                aren&apos;t quirks. They&apos;re locked doors.
+              </p>
+              <p className="text-base leading-relaxed text-fg-muted sm:text-lg">
+                Accessible design is the practice of removing those locks — one decision at a time.
+                Every color choice, every label, every interactive state is a chance to include or
+                exclude someone.
+              </p>
+            </div>
           </div>
 
-          {/* Right — video in a 16:9 frame; VideoAutoplay auto-plays on scroll into view */}
-          <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm aspect-square">
+          {/* Right — video */}
+          <div className="relative w-full overflow-hidden rounded-2xl border border-border shadow-card aspect-square bg-surface">
             <VideoAutoplay />
           </div>
 
         </div>
       </section>
 
-      {/* ── Why it matters: 3 pillars ──────────────────────────────────────── */}
+      {/* ── Why it matters: 3 pillars ────────────────────────────────────── */}
       <section
-        className="border-t border-border px-4 py-16 md:px-6"
+        className="border-t border-border px-4 py-16 md:px-6 md:py-20"
         aria-labelledby="pillars-heading"
       >
         <div className="mx-auto max-w-5xl">
-          <h2 id="pillars-heading" className="sr-only">
-            Why accessibility matters
-          </h2>
+          <h2 id="pillars-heading" className="sr-only">Why accessibility matters</h2>
 
-          <ul className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-3">
+          <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-3">
             {PILLARS.map(({ Icon, title, body }) => (
               <li
                 key={title}
-                className="rounded-lg border border-border bg-bg p-6"
+                className="rounded-xl border border-border bg-surface p-6 shadow-card"
               >
                 <span
-                  className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-focus-ring/10 text-focus-ring"
+                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl icon-gradient-bg text-focus-ring"
                   aria-hidden="true"
                 >
                   <Icon />
                 </span>
-                <h3 className="mb-2 text-base font-semibold text-fg">{title}</h3>
+                <h3 className="mb-2 text-sm font-bold tracking-tight text-fg">{title}</h3>
                 <p className="text-sm leading-relaxed text-fg-muted">{body}</p>
               </li>
             ))}
@@ -240,25 +215,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Accessibility Tools ────────────────────────────────────────────── */}
+      {/* ── Tools ────────────────────────────────────────────────────────── */}
       <section
-        className="border-t border-border px-4 py-16 md:px-6"
+        className="border-t border-border bg-surface px-4 py-16 md:px-6 md:py-20"
         aria-labelledby="tools-heading"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="mb-7">
-            <h2
-              id="tools-heading"
-              className="text-xl font-bold text-fg sm:text-2xl"
-            >
-              Quick checks
-            </h2>
-            <p className="mt-1 text-sm text-fg-muted">
-              Interactive tools to audit and improve your designs — no setup needed.
-            </p>
+
+          {/* Section header */}
+          <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.15em] gradient-text" aria-hidden="true">
+                Quick checks
+              </p>
+              <h2
+                id="tools-heading"
+                className="text-xl font-bold tracking-tight text-fg sm:text-2xl"
+              >
+                Audit your design, right now
+              </h2>
+              <p className="mt-1.5 text-sm text-fg-muted">
+                Interactive tools — no setup, no sign-up.
+              </p>
+            </div>
           </div>
 
-          <ul className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {TOOL_ITEMS.map((tool) => (
               <ToolCard
                 key={tool.slug}
@@ -270,6 +252,7 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
+
     </article>
   );
 }
