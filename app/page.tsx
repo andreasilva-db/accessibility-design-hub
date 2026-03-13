@@ -1,6 +1,5 @@
 import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolsCarousel } from "@/components/ToolsCarousel";
-import { VideoAutoplay } from "@/components/VideoAutoplay";
 
 // ── Inline icons ─────────────────────────────────────────────────────────────
 
@@ -177,10 +176,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right — video */}
-          <div className="relative w-full overflow-hidden rounded-2xl border border-border shadow-card aspect-square bg-surface">
-            <VideoAutoplay />
-          </div>
+          {/* Right — placeholder (VideoAutoplay coming in main branch) */}
+          <div className="relative w-full overflow-hidden rounded-2xl border border-border shadow-card aspect-square bg-surface" aria-hidden="true" />
 
         </div>
       </section>
