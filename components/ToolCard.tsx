@@ -7,11 +7,12 @@ type ToolCardProps = {
   slug: ToolSlug;
   title: string;
   description: string;
+  liClassName?: string;
 };
 
-export function ToolCard({ slug, title, description }: ToolCardProps) {
+export function ToolCard({ slug, title, description, liClassName = "" }: ToolCardProps) {
   return (
-    <li>
+    <li className={liClassName}>
       <Link
         href={`/tools/${slug}`}
         className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-bg shadow-sm hover:border-focus-ring hover:shadow-md hover:-translate-y-0.5 motion-safe-transition focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 dark:shadow-none dark:hover:shadow-none"

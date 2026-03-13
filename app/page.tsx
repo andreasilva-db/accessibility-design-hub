@@ -1,8 +1,88 @@
 import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/nav";
 import { TOOL_ITEMS } from "@/lib/tools";
-import { SectionCardIcon } from "@/components/SectionCardIcon";
-import { ToolCard } from "@/components/ToolCard";
+import { ToolsCarousel } from "@/components/ToolsCarousel";
+import { VideoAutoplay } from "@/components/VideoAutoplay";
+
+// ── Inline icons ─────────────────────────────────────────────────────────────
+
+function IconGlobe() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function IconShield() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+
+function IconStar() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden className="h-5 w-5">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+type ImpactStat = {
+  stat: string;
+  label: string;
+  source: string;
+};
+
+const IMPACT_STATS: ImpactStat[] = [
+  {
+    stat: "1.3B",
+    label: "people worldwide live with a disability",
+    source: "WHO, 2023",
+  },
+  {
+    stat: "97%",
+    label: "of top websites fail basic accessibility tests",
+    source: "WebAIM Million, 2024",
+  },
+  {
+    stat: "71%",
+    label: "of users with disabilities leave inaccessible sites",
+    source: "Click-Away Pound Report",
+  },
+];
+
+type Pillar = {
+  Icon: () => JSX.Element;
+  title: string;
+  body: string;
+};
+
+const PILLARS: Pillar[] = [
+  {
+    Icon: IconGlobe,
+    title: "It's a civil right",
+    body: "The web was built for everyone. When products are inaccessible, people are locked out of banking, healthcare, education, and work — not by circumstance, but by design.",
+  },
+  {
+    Icon: IconShield,
+    title: "It's the law",
+    body: "The ADA, European Accessibility Act, EN 301 549, and dozens of national standards make digital accessibility a legal requirement in most global markets.",
+  },
+  {
+    Icon: IconStar,
+    title: "It makes products better",
+    body: "Captions help people in noisy rooms. High contrast helps in bright sunlight. Clear structure helps everyone navigate faster. Accessible design is simply good design.",
+  },
+];
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
@@ -84,16 +164,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ul className="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {TOOL_ITEMS.map((tool) => (
-              <ToolCard
-                key={tool.slug}
-                slug={tool.slug}
-                title={tool.title}
-                description={tool.description}
-              />
-            ))}
-          </ul>
+          <ToolsCarousel tools={TOOL_ITEMS} />
         </div>
       </section>
     </article>
