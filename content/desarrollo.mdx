@@ -1,34 +1,319 @@
-# Desarrollo
+# Development
 
-## Descripción
+## Introduction
 
-Implementación técnica de la accesibilidad: HTML semántico, ARIA cuando sea necesario, exposición del estado y nombre a tecnologías de asistencia. Incluye buenas prácticas de componentes (botones, enlaces, modales, tabs).
+Accessibility becomes real during implementation.
 
-## Alcance
+Design defines intent, but development defines behavior, structure, and compatibility with assistive technologies. At this stage, accessibility is either preserved or lost.
 
-Aplica al código (HTML, CSS, JS y frameworks). Complementa diseño (visual, interacción) y contenido (textos, estructura). Requiere pruebas con lectores de pantalla y herramientas de inspección.
+This section focuses on how accessibility is implemented, and how designers can collaborate effectively with developers to ensure that intended behaviors are correctly translated into the final product.
 
-## Checklist
+## Where accessibility often breaks
 
-- Uso de elementos nativos (button, a, input, label) antes de ARIA.
-- ARIA solo cuando el semántico nativo no basta; roles y atributos correctos.
-- Nombres accesibles (nombre + opcionalmente descripción) para componentes custom.
-- Estados (expandido, seleccionado, error) expuestos a AT.
+Even well-designed interfaces can fail during implementation.
 
-## Errores comunes
+Common failure points include:
 
-- Div/span con role="button" sin teclado ni focus management.
-- ARIA redundante (p. ej. role="button" en un elemento `button`).
-- Contenido dinámico sin live region o sin anuncio al cambiar.
+- Replacing semantic elements with generic containers
+- Missing or incorrect keyboard interaction
+- Broken or undefined focus behavior
+- Missing accessible names for controls
+- Dynamic content that is not announced
+- Inconsistent or incomplete state handling
 
-## Cómo validar
+Accessibility issues are rarely caused by a single decision — they emerge when implementation details are not clearly defined or validated.
 
-- Inspección con DevTools (árbol de accesibilidad, ARIA).
-- Pruebas con NVDA/JAWS/VoiceOver según plataforma.
-- Linters (eslint-plugin-jsx-a11y) y pruebas automatizadas (axe, Pa11y).
+## What matters in implementation
 
-## Recursos relacionados
+### Semantic structure
 
-- [Interacción](/docs/interaccion) — requisitos de teclado y foco.
-- [Contenido](/docs/contenido) — estructura y texto alternativo.
-- Referencia: WAI-ARIA Authoring Practices, WCAG 2.2 criterios 4.1.2 (nombre, función, valor).
+The underlying HTML structure defines how content is interpreted.
+
+Correct semantics ensure that:
+
+- Elements have meaning and purpose
+- Assistive technologies can navigate the interface
+- Relationships between elements are clear
+
+**Design implication:** align UI patterns with real interaction types (action vs navigation). Avoid patterns that depend on custom behavior without clear structure.
+
+### Keyboard behavior
+
+All interactions must be operable without a mouse.
+
+This includes:
+
+- Navigating between elements
+- Triggering actions
+- Interacting with components such as menus, dialogs, and forms
+
+**Design implication:** define interaction patterns beyond hover and click. Ensure that all controls are reachable and usable. Consider keyboard behavior in complex components.
+
+### Focus behavior
+
+Focus determines how users move through the interface.
+
+During state changes (e.g. opening a modal, submitting a form), focus must:
+
+- Move intentionally
+- Remain within active contexts when required
+- Return to a logical location after completion
+
+**Design implication:** define focus entry, order, and exit. Treat focus as part of the interaction design, not an implementation detail.
+
+### Accessible names and relationships
+
+Assistive technologies rely on programmatic information, not visual appearance.
+
+This includes:
+
+- Labels associated with inputs
+- Names for interactive elements
+- Relationships between content and controls
+- Descriptions for dynamic updates
+
+**Design implication:** ensure all elements have clear meaning beyond visuals. Avoid relying only on layout or proximity to communicate relationships.
+
+### State and feedback
+
+Users need to understand what is happening in the interface.
+
+Implementation must communicate:
+
+- Changes in state (expanded, selected, active)
+- Validation errors and guidance
+- Loading and asynchronous updates
+
+**Design implication:** define states explicitly in design. Ensure feedback is not purely visual.
+
+## Collaboration with developers
+
+Accessibility improves significantly when expectations are explicit.
+
+Design should communicate:
+
+- Interaction behavior (including keyboard)
+- Focus management
+- Expected states and transitions
+- Labeling and content requirements
+- Acceptance criteria for accessibility
+
+### Examples of clear vs unclear handoff
+
+**Unclear**
+
+- "Accessible modal"
+- "Standard form validation"
+- "Follow accessibility best practices"
+
+**Clear**
+
+- Focus moves to the modal on open and returns on close
+- All actions are reachable and operable via keyboard
+- Each input has an associated label and error message
+- Errors are displayed and programmatically linked to the field
+- No interaction depends on hover only
+
+## Questions designers should ask
+
+- What element type is used for this interaction?
+- Can the full flow be completed using only a keyboard?
+- How is focus handled during state changes?
+- How are labels and relationships defined programmatically?
+- How are dynamic updates communicated?
+- What has been manually tested?
+
+These questions help validate implementation, not just design intent.
+
+## Common implementation risks
+
+- Generic containers used for interactive elements
+- Incomplete keyboard support
+- Missing or invisible focus states
+- Lack of focus management in overlays
+- Elements without accessible names
+- Feedback that is only visual
+- Inconsistent behavior across components
+
+## Practical baseline for teams
+
+- Define accessibility behavior as part of design, not after
+- Use native patterns whenever possible
+- Ensure full keyboard interaction
+- Define and validate focus behavior
+- Make labels and relationships explicit
+- Include accessibility in QA, not only design
+
+## Claude Skills
+
+### Introduction
+
+Claude Code skills are reusable instruction modules that extend how Claude assists during development workflows.
+
+They are typically defined using structured instructions (such as a SKILL.md file or project-level guidance in CLAUDE.md) and can be invoked automatically or manually when working in environments like Cursor or VS Code.
+
+Skills allow teams to standardize how Claude:
+
+- Reviews code
+- Generates requirements
+- Analyzes components
+- Supports development decisions
+
+In accessibility work, this is especially valuable because many checks are repetitive, detail-oriented, and easy to overlook without a structured process.
+
+### Why use skills for accessibility
+
+Accessibility is not a single task — it is a collection of small, consistent decisions across structure, interaction, and content.
+
+Skills help by:
+
+- Making accessibility checks repeatable
+- Reducing reliance on memory or individual expertise
+- Improving consistency across features and components
+- Supporting designers and developers with structured guidance
+- Accelerating reviews without skipping critical details
+
+They are particularly useful in teams where accessibility is still being adopted or standardized.
+
+### How skills actually work
+
+Claude Code skills are not "plugins" in the traditional sense.
+
+They are:
+
+- Reusable instructions
+- Scoped to specific tasks
+- Triggered either automatically or manually
+- Applied to code, descriptions, or files in context
+
+A skill typically:
+
+1. Receives input (code, component, or description)
+2. Applies a structured evaluation or transformation
+3. Returns a formatted output (issues, recommendations, requirements)
+
+They can be used inside development workflows such as:
+
+- Reviewing a component before merging
+- Analyzing a UI implementation
+- Generating requirements from a design spec
+- Writing structured tickets
+
+### Where skills fit in the workflow
+
+Skills are most effective when integrated into existing workflows:
+
+- During component implementation
+- During pull request reviews
+- During design-to-development handoff
+- During QA preparation
+- During accessibility audits
+
+They should not be treated as a final validation step, but as a support tool used throughout the process.
+
+### Accessibility skill use cases
+
+**Accessibility review**
+
+Used to evaluate a component or page against accessibility expectations.
+
+A skill can help identify:
+
+- Incorrect or missing semantics
+- Lack of keyboard operability
+- Missing focus management
+- Unclear or missing accessible names
+- Gaps in state communication
+
+This is especially useful during development or PR review.
+
+**Handoff interpretation**
+
+Used to translate design descriptions into implementation requirements.
+
+A skill can:
+
+- Extract interaction patterns
+- Define keyboard behavior
+- Identify required focus behavior
+- Highlight missing states or edge cases
+
+This helps bridge the gap between design intent and implementation.
+
+**Semantic structure guidance**
+
+Used to recommend appropriate HTML structure based on interaction type.
+
+A skill can:
+
+- Identify whether an element should be a button, link, or input
+- Suggest native HTML alternatives
+- Warn against unnecessary custom components
+
+This helps prevent common accessibility issues at the implementation level.
+
+**Keyboard and focus audit**
+
+Used to analyze whether a flow is operable and logically structured.
+
+A skill can:
+
+- Detect broken or illogical focus order
+- Identify unreachable elements
+- Flag missing focus transitions
+- Highlight interactions that depend only on hover
+
+This is particularly useful for complex components such as modals, menus, and forms.
+
+**Accessibility ticket generation**
+
+Used to convert findings into structured development tasks.
+
+A skill can:
+
+- Describe the issue clearly
+- Define expected behavior
+- Include acceptance criteria
+- Suggest validation steps
+
+This improves communication and reduces ambiguity.
+
+### Using skills as a designer
+
+Designers do not need to create complex skills to benefit from them.
+
+Skills can support designers by:
+
+- Reviewing handoff documentation before sharing with developers
+- Identifying missing interaction details
+- Generating accessibility acceptance criteria
+- Validating whether a component definition is complete
+- Improving communication with engineering
+
+This makes accessibility requirements more explicit and easier to implement correctly.
+
+### Best practices for accessibility skills
+
+To be effective, skills should:
+
+- Focus on a specific task (e.g. "review keyboard behavior")
+- Use clear evaluation criteria
+- Produce structured outputs (not long paragraphs)
+- Align with team standards (e.g. WCAG 2.2 AA)
+- Be reusable across multiple components and features
+
+Generic instructions like "check accessibility" are less useful than targeted, structured reviews.
+
+### Limitations
+
+Claude Code skills are a support tool, not a guarantee.
+
+They do not replace:
+
+- Manual keyboard testing
+- Real interaction validation
+- Assistive technology testing
+- QA processes
+- Product or design decisions
+
+They help identify issues and structure work, but final validation must still be performed by the team.
