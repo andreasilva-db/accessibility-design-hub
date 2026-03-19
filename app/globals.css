@@ -99,7 +99,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #22d3ee;
-  animation: gradient-flow 5s linear infinite;
+  animation: gradient-flow 3s linear infinite;
 }
 
 /* ── Hero ───────────────────────────────────────────────── */
