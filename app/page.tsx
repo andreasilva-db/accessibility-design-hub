@@ -2,7 +2,7 @@ import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
 import { PillarCard } from "@/components/PillarCard";
-import { StatCard } from "@/components/StatCard";
+import { StatsSpotlight } from "@/components/StatCard";
 
 // ── Inline icons ─────────────────────────────────────────────────────────────
 
@@ -124,27 +124,29 @@ export default function HomePage() {
       >
         <h2 id="stats-heading" className="sr-only">Impact by the numbers</h2>
 
-        <dl className="mx-auto grid max-w-4xl grid-cols-1 gap-0 sm:grid-cols-3">
-          {IMPACT_STATS.map(({ stat, label, source }, i) => (
-            <StatCard
-              key={stat}
-              className={
-                "flex flex-col items-center text-center px-8 py-6 " +
-                (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
-              }
-            >
-              <dt className="sr-only">{label}</dt>
-              <dd
-                className="stat-number text-5xl font-black tabular-nums tracking-tighter lg:text-6xl"
-                aria-label={`${stat} — ${label}`}
+        <StatsSpotlight className="mx-auto max-w-4xl rounded-2xl">
+          <dl className="grid grid-cols-1 gap-0 sm:grid-cols-3">
+            {IMPACT_STATS.map(({ stat, label, source }, i) => (
+              <div
+                key={stat}
+                className={
+                  "flex flex-col items-center text-center px-8 py-10 " +
+                  (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
+                }
               >
-                {stat}
-              </dd>
-              <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
-              <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
-            </StatCard>
-          ))}
-        </dl>
+                <dt className="sr-only">{label}</dt>
+                <dd
+                  className="stat-number text-5xl font-black tabular-nums tracking-tighter lg:text-6xl"
+                  aria-label={`${stat} — ${label}`}
+                >
+                  {stat}
+                </dd>
+                <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
+                <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
+              </div>
+            ))}
+          </dl>
+        </StatsSpotlight>
       </section>
 
       {/* ── Narrative callout ─────────────────────────────────────────────── */}

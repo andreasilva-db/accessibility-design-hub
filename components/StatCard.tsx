@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-export function StatCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function StatsSpotlight({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -16,13 +16,13 @@ export function StatCard({ children, className = "" }: { children: React.ReactNo
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={"relative transition-all duration-300 " + className}
+      className={"relative overflow-hidden " + className}
     >
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300"
         style={{
           opacity: hovered ? 1 : 0,
-          background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, rgba(96,165,250,0.10), transparent 70%)`,
+          background: `radial-gradient(500px circle at ${pos.x}px ${pos.y}px, rgba(96,165,250,0.08), transparent 70%)`,
         }}
         aria-hidden="true"
       />
