@@ -141,7 +141,7 @@ export function ResourcesGrid() {
         ))}
       </div>
 
-      <ul className="m-0 grid !list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
+      <ul className="m-0 grid !list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((r) => (
           <li key={r.url} className="!list-none [list-style:none]" style={{ listStyle: "none" }}>
             <a

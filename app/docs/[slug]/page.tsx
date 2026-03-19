@@ -67,7 +67,7 @@ export default async function DocSlugPage({ params }: DocSlugPageProps) {
     notFound();
   }
   return (
-    <article className="mx-auto w-full max-w-3xl [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-14 [&_h2]:mb-4 [&_h2]:pt-8 [&_h2]:border-t [&_h2]:border-border [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-fg [&_p]:mb-5 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ul]:space-y-1.5 [&_li]:text-fg-muted [&_a]:text-focus-ring [&_a]:underline [&_a]:underline-offset-2 [&_hr]:my-0 [&_hr]:border-0 [&_strong]:text-fg [&_strong]:font-semibold">
+    <article className="max-w-5xl [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-14 [&_h2]:mb-4 [&_h2]:pt-8 [&_h2]:border-t [&_h2]:border-border [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-fg [&_p]:mb-5 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ul]:space-y-1.5 [&_li]:text-fg-muted [&_a]:text-focus-ring [&_a]:underline [&_a]:underline-offset-2 [&_hr]:my-0 [&_hr]:border-0 [&_strong]:text-fg [&_strong]:font-semibold">
       <MDXRemote source={content} components={MDX_COMPONENTS} />
     </article>
   );
