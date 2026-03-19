@@ -119,18 +119,18 @@ export default function HomePage() {
 
       {/* ── Impact stats ─────────────────────────────────────────────────── */}
       <section
-        className="border-t border-border px-4 py-16 md:px-6 md:py-20"
+        className="border-t border-border"
         aria-labelledby="stats-heading"
       >
         <h2 id="stats-heading" className="sr-only">Impact by the numbers</h2>
 
-        <StatsSpotlight className="mx-auto max-w-4xl rounded-2xl">
+        <StatsSpotlight className="w-full">
           <dl className="grid grid-cols-1 gap-0 sm:grid-cols-3">
             {IMPACT_STATS.map(({ stat, label, source }, i) => (
               <div
                 key={stat}
                 className={
-                  "flex flex-col items-center text-center px-8 py-10 " +
+                  "flex flex-col items-center text-center px-12 py-16 " +
                   (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
                 }
               >
