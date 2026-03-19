@@ -9,6 +9,7 @@ import { ColorMeaningDemo } from "@/components/demos/ColorMeaningDemo";
 import { FocusStateDemo } from "@/components/demos/FocusStateDemo";
 import { HierarchyDemo } from "@/components/demos/HierarchyDemo";
 import { ToolShortcutsGrid } from "@/components/ToolShortcutsGrid";
+import { ResourcesGrid } from "@/components/ResourcesGrid";
 import type { Metadata } from "next";
 
 const DEMO_COMPONENTS = {
@@ -19,7 +20,7 @@ const DEMO_COMPONENTS = {
   FocusStateDemo,
   HierarchyDemo,
 };
-const MDX_COMPONENTS = { ...DEMO_COMPONENTS, ToolShortcutsGrid };
+const MDX_COMPONENTS = { ...DEMO_COMPONENTS, ToolShortcutsGrid, ResourcesGrid };
 
 type DocSlugPageProps = {
   params: Promise<{ slug: string }>;
