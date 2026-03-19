@@ -4,6 +4,7 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   turbopack: {},
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  turbopack: {},
   transpilePackages: ["next-mdx-remote"],
   async redirects() {
     return [
