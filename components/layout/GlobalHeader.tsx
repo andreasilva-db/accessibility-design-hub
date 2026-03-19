@@ -30,17 +30,21 @@ export function GlobalHeader() {
       }
       role="banner"
     >
-      <div className="mx-auto max-w-6xl px-4 md:px-6 py-3 flex items-center justify-between gap-4">
+      <div className="w-full px-4 md:px-6 py-3 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-2.5 group rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
         >
           <span
-            className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-focus-ring text-white text-xs font-bold tracking-tight select-none"
+            className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-focus-ring text-white select-none"
             aria-hidden="true"
           >
-            A
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+              <circle cx="12" cy="4" r="2" />
+              <path d="M12 7c-1.1 0-2 .9-2 2v4l-2.5 4.5a1 1 0 001.75.98L11 15h2l1.75 3.48a1 1 0 001.75-.98L14 13V9c0-1.1-.9-2-2-2z" />
+              <path d="M8.5 9.5C7 10.3 6 11.8 6 13.5c0 2.5 2 4.5 4.5 4.5.6 0 1.2-.1 1.7-.3" opacity=".4" />
+            </svg>
           </span>
           <span className="text-sm font-semibold text-fg truncate group-hover:text-focus-ring motion-safe-transition">
             Accessibility Design Hub
