@@ -42,6 +42,7 @@ export async function generateStaticParams() {
     "interaccion",
     "contenido",
     "desarrollo",
+    "claude-skills",
     "proceso-de-diseno",
     "recursos",
   ];
