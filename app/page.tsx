@@ -105,7 +105,8 @@ export default function HomePage() {
             Inclusive experiences{" "}
             <br className="hidden sm:block" />
             aren&apos;t an extra feature
-            <span className="gradient-text"> — they&apos;re the foundation</span>
+            <span className="gradient-text"> — they&apos;re the </span>
+            <span className="gradient-text-flow">foundation</span>
           </h1>
 
           {/* Sub */}
