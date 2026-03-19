@@ -141,14 +141,14 @@ export function ResourcesGrid() {
         ))}
       </div>
 
-      <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
+      <ul className="m-0 grid !list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
         {filtered.map((r) => (
-          <li key={r.url}>
+          <li key={r.url} className="!list-none [list-style:none]" style={{ listStyle: "none" }}>
             <a
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-full flex-col gap-3 rounded-xl border border-border bg-surface p-5 no-underline transition-all duration-200 hover:border-focus-ring/40 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
+              className="group flex h-full flex-col gap-3 rounded-xl border border-border bg-surface p-5 !no-underline transition-all duration-200 hover:border-focus-ring/40 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2"
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="text-sm font-semibold text-fg leading-snug group-hover:text-focus-ring transition-colors duration-200">
