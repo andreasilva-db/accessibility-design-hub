@@ -16,7 +16,7 @@ export function StatCard({ children, className = "" }: { children: React.ReactNo
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={"relative overflow-hidden transition-all duration-300 " + className}
+      className={"relative transition-all duration-300 " + className}
     >
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300"
