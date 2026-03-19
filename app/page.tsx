@@ -2,6 +2,7 @@ import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
 import { PillarCard } from "@/components/PillarCard";
+import { StatCard } from "@/components/StatCard";
 
 // ── Inline icons ─────────────────────────────────────────────────────────────
 
@@ -125,7 +126,7 @@ export default function HomePage() {
 
         <dl className="mx-auto grid max-w-4xl grid-cols-1 gap-0 sm:grid-cols-3">
           {IMPACT_STATS.map(({ stat, label, source }, i) => (
-            <div
+            <StatCard
               key={stat}
               className={
                 "flex flex-col items-center text-center px-8 py-6 " +
@@ -141,7 +142,7 @@ export default function HomePage() {
               </dd>
               <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
               <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
-            </div>
+            </StatCard>
           ))}
         </dl>
       </section>
