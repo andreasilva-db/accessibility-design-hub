@@ -1,6 +1,7 @@
 import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
+import { PillarCard } from "@/components/PillarCard";
 
 // ── Inline icons ─────────────────────────────────────────────────────────────
 
@@ -197,10 +198,7 @@ export default function HomePage() {
 
           <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-3">
             {PILLARS.map(({ Icon, title, body }) => (
-              <li
-                key={title}
-                className="rounded-xl border border-border bg-surface p-6 shadow-card"
-              >
+              <PillarCard key={title}>
                 <span
                   className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl icon-gradient-bg text-focus-ring"
                   aria-hidden="true"
@@ -209,7 +207,7 @@ export default function HomePage() {
                 </span>
                 <h3 className="mb-2 text-sm font-bold tracking-tight text-fg">{title}</h3>
                 <p className="text-sm leading-relaxed text-fg-muted">{body}</p>
-              </li>
+              </PillarCard>
             ))}
           </ul>
         </div>
