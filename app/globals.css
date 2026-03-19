@@ -76,26 +76,30 @@
 
 @keyframes gradient-flow {
   0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .gradient-text-flow {
+  /* Palindrome gradient: cyan→blue→violet→blue→cyan (×2)
+     Both halves are identical → loop seam is invisible */
   background: linear-gradient(
     to right,
-    #06b6d4,
-    #3b82f6,
-    #8b5cf6,
-    #22d3ee,
-    #06b6d4,
-    #3b82f6,
-    #8b5cf6
+    #22d3ee  0%,
+    #3b82f6  12.5%,
+    #8b5cf6  25%,
+    #3b82f6  37.5%,
+    #22d3ee  50%,
+    #3b82f6  62.5%,
+    #8b5cf6  75%,
+    #3b82f6  87.5%,
+    #22d3ee  100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #06b6d4;
-  animation: gradient-flow 4s linear infinite;
+  color: #22d3ee;
+  animation: gradient-flow 5s linear infinite;
 }
 
 /* ── Hero ───────────────────────────────────────────────── */
