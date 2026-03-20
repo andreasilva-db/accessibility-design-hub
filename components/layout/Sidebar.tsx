@@ -50,9 +50,9 @@ export function Sidebar({ onNavigate, className = "" }: SidebarProps) {
 
               {children.length > 0 && (
                 <ul className="list-none p-0 m-0 mt-0.5 ml-3 flex flex-col gap-0.5 border-l border-border pl-2">
-                  {children.map(({ slug: childSlug, label: childLabel }) => {
-                    const childHref = `/docs/${childSlug}`;
-                    const isChildActive = pathname === childHref;
+                  {children.map(({ slug: childSlug, label: childLabel, href: childHrefOverride }) => {
+                    const childHref = childHrefOverride ?? `/docs/${childSlug}`;
+                    const isChildActive = !childHrefOverride && pathname === childHref;
                     return (
                       <li key={childSlug}>
                         <Link

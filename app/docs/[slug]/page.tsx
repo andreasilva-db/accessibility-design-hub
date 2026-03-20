@@ -20,7 +20,20 @@ const DEMO_COMPONENTS = {
   FocusStateDemo,
   HierarchyDemo,
 };
-const MDX_COMPONENTS = { ...DEMO_COMPONENTS, ToolShortcutsGrid, ResourcesGrid };
+function slugify(text: unknown): string {
+  return typeof text === "string"
+    ? text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    : "";
+}
+
+const MDX_COMPONENTS = {
+  ...DEMO_COMPONENTS,
+  ToolShortcutsGrid,
+  ResourcesGrid,
+  h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 id={slugify(children)} {...props}>{children}</h2>
+  ),
+};
 
 type DocSlugPageProps = {
   params: Promise<{ slug: string }>;
