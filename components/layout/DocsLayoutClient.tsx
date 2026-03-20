@@ -11,7 +11,7 @@ export function DocsLayoutClient({ children }: { children: React.ReactNode }) {
     <>
       <div className="flex flex-1 min-h-0 min-w-0 w-full">
         <aside
-          className="hidden md:flex md:w-56 md:shrink-0 border-r border-border bg-bg p-4 overflow-y-auto"
+          className="hidden md:flex md:w-56 md:shrink-0 border-r border-border bg-bg p-4 overflow-y-auto sticky top-14 self-start max-h-[calc(100vh-3.5rem)]"
           aria-label="Section navigation"
         >
           <Sidebar onNavigate={() => setDrawerOpen(false)} />
