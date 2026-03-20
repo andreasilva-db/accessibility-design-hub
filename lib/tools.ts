@@ -38,7 +38,7 @@ export const TOOL_ITEMS: ToolItem[] = [
     title: "Keyboard Navigation",
     description:
       "Audit tab order and keyboard operability of interactive elements on any page.",
-    hasDemo: false,
+    hasDemo: true,
   },
   {
     slug: "screen-reader",
