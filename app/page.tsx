@@ -2,7 +2,7 @@ import { TOOL_ITEMS } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 import { VideoAutoplay } from "@/components/VideoAutoplay";
 import { PillarCard } from "@/components/PillarCard";
-import { StatsSpotlight } from "@/components/StatCard";
+
 
 // ── Inline icons ─────────────────────────────────────────────────────────────
 
@@ -119,34 +119,32 @@ export default function HomePage() {
 
       {/* ── Impact stats ─────────────────────────────────────────────────── */}
       <section
-        className="border-t border-border"
+        className="border-t border-border px-4 py-16 md:px-6 md:py-20"
         aria-labelledby="stats-heading"
       >
         <h2 id="stats-heading" className="sr-only">Impact by the numbers</h2>
 
-        <StatsSpotlight className="w-full">
-          <dl className="grid grid-cols-1 gap-0 sm:grid-cols-3">
-            {IMPACT_STATS.map(({ stat, label, source }, i) => (
-              <div
-                key={stat}
-                className={
-                  "flex flex-col items-center text-center px-12 py-16 " +
-                  (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
-                }
+        <dl className="mx-auto grid max-w-4xl grid-cols-1 gap-0 sm:grid-cols-3">
+          {IMPACT_STATS.map(({ stat, label, source }, i) => (
+            <div
+              key={stat}
+              className={
+                "flex flex-col items-center text-center px-8 py-6 " +
+                (i < 2 ? "sm:border-r border-b sm:border-b-0 border-border" : "")
+              }
+            >
+              <dt className="sr-only">{label}</dt>
+              <dd
+                className="stat-number text-5xl font-black tabular-nums tracking-tighter lg:text-6xl"
+                aria-label={`${stat} — ${label}`}
               >
-                <dt className="sr-only">{label}</dt>
-                <dd
-                  className="stat-number text-5xl font-black tabular-nums tracking-tighter lg:text-6xl"
-                  aria-label={`${stat} — ${label}`}
-                >
-                  {stat}
-                </dd>
-                <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
-                <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
-              </div>
-            ))}
-          </dl>
-        </StatsSpotlight>
+                {stat}
+              </dd>
+              <p className="mt-3 text-sm font-medium leading-snug text-fg max-w-[180px]">{label}</p>
+              <p className="mt-1.5 text-xs text-fg-muted">{source}</p>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* ── Narrative callout ─────────────────────────────────────────────── */}
